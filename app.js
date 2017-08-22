@@ -1,4 +1,5 @@
 var express = require('express'),
+    engine = require('ejs-locals'),
     app = express(),
     port = process.env.PORT || 3000,
     bodyParser = require('body-parser');
@@ -6,6 +7,9 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use('/assets', express.static(__dirname + '/public'));
+
+// use ejs-locals for all ejs templates:
+app.engine('ejs', engine);
 
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');

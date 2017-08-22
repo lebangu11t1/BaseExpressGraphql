@@ -12,8 +12,11 @@ router.get('/create', groupsController.create);
 //store
 router.post('/create', groupsController.store);
 
-//show
+//show group
 router.get('/:group', groupsController.show);
+
+//show reply
+router.get('/:group/:comment', groupsController.show_reply);
 
 //edit
 router.get('/:group/edit', groupsController.edit);

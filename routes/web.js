@@ -8,8 +8,20 @@ module.exports = function (app) {
      * 
      */
 
+    app.route('/').get(function(req, res, next){
+        res.render('home', {title:'home'});
+    });
+
     //group: groups router
     app.use('/groups', groups);
+
+    app.route('/user').get(function(req, res, next){
+        res.render('users/profile', {title: 'profile'});
+    });
+
+    app.route('/reply').get(function(req, res, next){
+        res.render('groups/show', {title: 'show group'});
+    });
 
     /**
      * [Error Routes]

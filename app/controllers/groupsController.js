@@ -13,13 +13,14 @@ module.exports = {
      * @param {any} res 
      */
     index: function(req, res) {
-        con.query('SELECT * FROM circle_types', function (error, results, fields) {
-            if (error) throw error;
-            console.log(results);
-            res.render('groups/index', {
-                groups : results
-            })
-        });
+        // con.query('SELECT * FROM circle_types', function (error, results, fields) {
+        //     if (error) throw error;
+        //     console.log(results);
+        //     res.render('groups/index', {
+        //         groups : results
+        //     })
+        // });
+        res.render('groups/index', {title:'groups'});
     },
 
     /**
@@ -29,7 +30,7 @@ module.exports = {
      * @param {any} res 
      */
     show: function(req, res) {
-        //To do something
+        res.render('groups/show', {title:'show detail'});
     },
 
     /**
@@ -80,5 +81,15 @@ module.exports = {
      */
     destroy: function(req, res) {
         //To do something
+    },
+
+    /**
+     * [Show Reply function]
+     * 
+     * @param {any} req 
+     * @param {any} res 
+     */
+    show_reply: function(req, res) {
+        res.render('groups/reply', {title:'reply'});
     }
 }
