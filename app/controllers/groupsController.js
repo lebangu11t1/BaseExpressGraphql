@@ -24,7 +24,7 @@ module.exports = {
      * @param {any} res 
      */
     show: function(req, res) {
-        res.render('groups/show', {title:'show detail'});
+        res.render('groups/index', {title:'show detail'});
     },
 
     /**
