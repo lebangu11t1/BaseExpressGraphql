@@ -1,99 +1,57 @@
-<% layout('../layouts/master.ejs') -%>
+<% layout('../layouts/master.ejs') %>
 
 <div class="col-11">
     <div class="row">
-    <div class="col-md-8 col-sm-12 col-xs-12">
-        <!--アニメ-->
-        <div class="card" style="width: 100%;">
-        <div class="card-body">
-            <p class="card-text">アニメ</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                <div class="row">
-                <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
-                    <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                    </div>
-                <div class="col-10" style="padding: 0px;">
-                <a href="detail-group.html">
-                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                    <time class="status-time-infor">1 時間前</time>
-                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                    <p>
-                    <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                    <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                    <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
-                    </p>
-                    </a>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <!--アニメ-->
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <p class="card-text">アニメ</p>
                 </div>
+                <ul class="list-group list-group-flush">
+                    <% clubs.forEach(function (club) { %>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
+                                    <a href="profile.html"><img src="<%= club.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(club.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                </div>
+                                <div class="col-10" style="padding: 0px;">
+                                    <a href="detail-group.html">
+                                        <h6><%= club.title %></h6>
+                                        <time class="status-time-infor"><%= club.hours == 0 ? 'Lasted' : club.hours + ' ' + '時間前' %></time>
+                                        <p class="par"><%= club.body %></p>
+                                        <p>
+                                            <span class="name-group"><i class="fa fa-circle"></i><%= club.name %></span>
+                                            <span class="status-infor"><i class="fa fa-circle"></i> <%= club.total_comments %>件</span>
+                                            <span class="status-infor"><i class="fa fa-user"></i> <%= club.total_members %>人</span>
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+                <div class="text-center area-load-more">
+                    <a href="#" class="card-load">もっと見る</a>
                 </div>
-            </li>
-            <li class="list-group-item">
-            <div class="row">
-                <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
-                    <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                    </div>
-                <div class="col-10" style="padding: 0px;">
-                <a href="detail-group.html">
-                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                    <time class="status-time-infor">1 時間前</time>
-                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                    <p>
-                    <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                    <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                    <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
-                    </p>
-                    </a>
-                </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-            <div class="row">
-                <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
-                    <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                    </div>
-                <div class="col-10" style="padding: 0px;">
-                <a href="detail-group.html">
-                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                    <time class="status-time-infor">1 時間前</time>
-                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                    <p>
-                    <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                    <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                    <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
-                    </p>
-                    </a>
-                </div>
-                </div>
-            </li>
-        </ul>
-        <div class="text-center area-load-more">
-            <a href="#" class="card-load">もっと見る</a>
-        </div>
+            </div>
+            <div class="clear-fix"></div>
         </div>
 
-        <div class="clear-fix"></div>
-    </div>
-    
-    <div class="col-md-4 col-sm-12 col-xs-12">
-        <div class="card" style="width:100%;">
-        <div class="card-body">
-            <p class="card-text">サークルカテゴリーリスト</p>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="card" style="width:100%;">
+            <div class="card-body">
+                <p class="card-text">サークルカテゴリーリスト</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <% groups.forEach(function(group){ %>
+                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span class="item-dot "></span><span><%= group.name %></span></a>
+                    <% }); %>
+                </li>
+            </ul>
+            </div>
+            <div class="clear-fix"></div>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>アニメ</span></a>
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>ゲーム</span></a>
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>とにかくひますぎる</span></a>
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>スポーツ</span></a>
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>ファッション・美容</span></a>
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>アイドル</span></a>
-            <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>その他</span></a>
-            </li>
-        </ul>
-        </div>
-
-        <div class="clear-fix"></div>
-    </div>
     </div>
 </div>
