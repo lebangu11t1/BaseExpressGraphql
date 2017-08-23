@@ -292,3 +292,28 @@ body {
 	width: 50px;
 	height: 50px;
 }
+.address-app {
+	display: inline-block; 
+	margin: 0.75rem;
+}
+.title-private, .title-error {
+	margin: 1.5rem 0px; 
+	font-size: 1.861em;
+}
+.area-private, .area-404{
+	max-width: 720px; 
+	margin: 0px auto; 
+	padding: 3rem 1.5rem; 
+	color: rgb(101, 114, 124); 
+	text-align: center;
+}
+.panel-private, .panel-404 {
+	margin: 0px auto; 
+	padding: 0px 2% 2%; 
+	width: 100%;
+}
+.number-error {
+	margin: 0px; 
+	font-size: 5.239em; 
+	line-height: 4.5rem;
+}

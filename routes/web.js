@@ -28,7 +28,7 @@ module.exports = function (app) {
      * 
      */
     app.use(function (req, res) {
-        res.status(404).send({url: ' Sorry bro, but ' + req.originalUrl + 'not found'})
+        res.status(404).render('errors/404', {title: 'errors'})
     });
 };
 
