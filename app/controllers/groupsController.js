@@ -21,9 +21,12 @@ module.exports = {
      * [Show function]
      * 
      * @param {any} req 
-     * @param {any} res 
+     * @param {any} res
+     * render show
      */
     show: function(req, res) {
+        var id = res.params.group;
+        console.log(id)
         res.render('groups/index', {title:'show detail'});
     },
 
