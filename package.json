@@ -14,6 +14,7 @@
     "ejs": "^2.5.7",
     "ejs-locals": "^1.0.2",
     "express": "^4.15.4",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "node-datetime": "^2.0.0"
   }
 }

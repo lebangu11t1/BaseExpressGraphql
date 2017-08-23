@@ -1,6 +1,7 @@
 'use strict';
 
 var groups = require('./groups');
+var groupsController = require('../app/controllers/groupsController');
 
 module.exports = function (app) {
     /**
@@ -8,9 +9,7 @@ module.exports = function (app) {
      * 
      */
 
-    app.route('/').get(function(req, res, next){
-        res.render('home', {title:'home'});
-    });
+    app.route('/').get(groupsController.home);
 
     //group: groups router
     app.use('/groups', groups);

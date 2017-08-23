@@ -1,4 +1,4 @@
-<% layout('./layouts/master.ejs') -%>
+<% layout('./layouts/master.ejs') %>
 
 <div class="col-11">
     <div class="row">
@@ -10,66 +10,27 @@
                 </div>
 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                    <% posts.forEach(function (post) { %>
+                        <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                <a href="profile.html"><img src= "<%= post.image == null ? "/assets/image/default-user.jpg" : JSON.parse(post.image).thumb %>"  alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
                                 <a href="detail-group.html">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
+                                    <h6><%= post.title %></h6>
+                                    <time class="status-time-infor"><%= post.hours == 0 ? 'Lasted' : post.hours + ' ' + '時間前' %></time>
+                                    <p><%= post.body %></p>
                                     <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
+                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
+                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
+                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
                                     </p>
                                 </a>
                             </div>
                         </div>
                     </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                            </div>
-                            <div class="col-10" style="padding: 0px;">
-                                <a href="detail-group.html">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                            </div>
-                            <div class="col-10" style="padding: 0px;">
-                                <a href="detail-group.html">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    
+                    <% }) %>
                 </ul>
 
                 <div class="text-center area-load-more">
@@ -84,110 +45,27 @@
                     <p class="card-text">人気のサークル</p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <% posts.forEach(function (post) { %>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
+                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
+                                <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
+                            <div class="col-10" style="padding: 0px;">
+                                <a href="detail-group.html">
+                                    <h6><%= post.title %></h6>
+                                    <time class="status-time-infor"><%= post.hours == 0 ? 'Lasted' : post.hours + ' ' + '時間前' %></time>
+                                    <p><%= post.body %></p>
                                     <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
+                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
+                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
+                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
                                     </p>
                                 </a>
                             </div>
                         </div>
                     </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
+                    <% }) %>
                 </ul>
                 <div class="text-center area-load-more ">
                     <a href="# " class="card-load ">もっと見る</a>
@@ -201,110 +79,27 @@
                     <p class="card-text ">殿堂入り</p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <% posts.forEach(function (post) { %>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
+                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
+                                <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
+                            <div class="col-10" style="padding: 0px;">
+                                <a href="detail-group.html">
+                                    <h6><%= post.title %></h6>
+                                    <time class="status-time-infor"><%= post.hours == 0 ? 'Lasted' : post.hours + ' ' + '時間前' %></time>
+                                    <p><%= post.body %></p>
                                     <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
+                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
+                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
+                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
                                     </p>
                                 </a>
                             </div>
                         </div>
                     </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                            </div>
-                            <div class="col-10 " style="padding: 0px; ">
-                                <a href="detail-group.html ">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor ">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                                    <p>
-                                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
+                    <% }) %>
                 </ul>
                 <div class="text-center area-load-more">
                     <a href="#" class="card-load">もっと見る</a>
@@ -318,66 +113,28 @@
                     <p class="card-text">すべての新着サークル</p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <% posts.forEach(function (post) { %>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                        <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                        </div>
-                    <div class="col-10 " style="padding: 0px; ">
-                    <a href="detail-group.html ">
-                        <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                        <time class="status-time-infor ">1 時間前</time>
-                        <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                        <p>
-                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                        </p>
-                        </a>
-                    </div>
-                    </div>
-                </li>
-                <li class="list-group-item ">
-                <div class="row ">
-                    <div class="col-1 " style="margin-right: 20px;padding-left: 5px;">
+                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
                                 <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
                                 <a href="detail-group.html">
-                                    <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                                    <time class="status-time-infor">1 時間前</time>
-                                    <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
+                                    <h6><%= post.title %></h6>
+                                    <time class="status-time-infor"><%= post.hours == 0 ? 'Lasted' : post.hours + ' ' + '時間前' %></time>
+                                    <p><%= post.body %></p>
                                     <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i> 悩み相談</span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> 500件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> 300人</span>
+                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
+                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
+                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
                                     </p>
                                 </a>
                             </div>
                         </div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                        <a href="profile.html "><img src="/assets/image/default-user.jpg " alt="... " class="rounded-circle
-                                " width="50px " height="50px "></a>
-                        </div>
-                    <div class="col-10 " style="padding: 0px; ">
-                    <a href="detail-group.html ">
-                        <h6>障がい・身体、精神病気・精神的に不安定・相談サークル</h6>
-                        <time class="status-time-infor ">1 時間前</time>
-                        <p>障がいを持った方や精神的に不安定な人、病気などの悩みを持った方が入るサークルです。なんでも話してください。ただ、無関係な投稿、荒らしはやめてください。</p>
-                        <p>
-                        <span class="name-group "><i class="fa fa-circle "></i> 悩み相談</span>
-                        <span class="status-infor "><i class="fa fa-circle "></i> 500件</span>
-                        <span class="status-infor "><i class="fa fa-user "></i> 300人</span>
-                        </p>
-                        </a>
-                    </div>
-                    </div>
-                </li>
-            </ul>
+                    <% }) %>
+                </ul>
             <div class="text-center area-load-more ">
                 <a href="# " class="card-load ">もっと見る</a>
             </div>
@@ -394,17 +151,12 @@
             </div>
             <ul class="list-group list-group-flush ">
                 <li class="list-group-item ">
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>アニメ</span></a>
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>ゲーム</span></a>
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>とにかくひますぎる</span></a>
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>スポーツ</span></a>
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>ファッション・美容</span></a>
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>アイドル</span></a>
-                <a href="group.html " class="list-group-chat-item "><span class="item-dot "></span><span>その他</span></a>
+                    <% groups.forEach(function(group){ %>
+                        <a href="/groups" class="list-group-chat-item "><span class="item-dot "></span><span><%= group.name %></span></a>
+                    <% }); %>
                 </li>
             </ul>
             </div>
-
             <div class="clear-fix "></div>
         </div>
     </div>
