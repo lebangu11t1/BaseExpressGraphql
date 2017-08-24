@@ -11,6 +11,8 @@ module.exports = function (app) {
 
     app.route('/').get(groupsController.home);
 
+    app.route('/club/:id').get(groupsController.list_a_club);
+
     //group: groups router
     app.use('/groups', groups);
 
