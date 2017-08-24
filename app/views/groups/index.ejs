@@ -13,7 +13,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                    <a href="profile.html"><img src="<%= club.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(club.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                    <a href="/users/<%= club.id_user %>"><img src="<%= club.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(club.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                                 </div>
                                 <div class="col-10" style="padding: 0px;">
                                     <a href="/club/<%= club.id %>">

@@ -12,7 +12,7 @@
             <% comments.forEach(function (comment) { %>
             <% if (comment.parent_id != null) { %>
                 <li class="list-group-item">
-                    <a href="reply.html">
+                    <a href="/users/<%= comment.id_user %>">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
                                 <img src="<%= comment.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(comment.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px">
