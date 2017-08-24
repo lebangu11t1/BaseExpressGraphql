@@ -150,7 +150,7 @@ module.exports = {
     list_a_club : function (req, res) {
         var id = req.params.id;
         var sql = "SELECT * FROM circle_types ;" +
-            "SELECT circle_post_comments.id as id_post_comment, circle_post_comments.body, circle_post_comments.created_at, circle_post_comments.parent_id, users.id as id_user, users.avatar, users.username, circle_posts.title as title_post FROM circle_post_comments INNER JOIN users ON circle_post_comments.user_id = users.id INNER JOIN circle_posts ON circle_post_comments.circle_post_id = circle_posts.id  WHERE circle_post_id = "+ id +"";
+            "SELECT circle_post_comments.id as id_post_comment, circle_post_comments.body, circle_post_comments.created_at, circle_post_comments.parent_id, users.id as id_user, users.avatar, users.username, circle_posts.title as title_post FROM circle_post_comments INNER JOIN users ON circle_post_comments.user_id = users.id INNER JOIN circle_posts ON circle_post_comments.circle_post_id = circle_posts.id  WHERE circle_post_id = "+ id +" LIMIT "+ paginate.limit +" OFFSET 0 ";
         con.query(sql, function (err, results) {
             if (err) {
                 return res.status(404).render('errors/404', {title: 'errors'});
@@ -172,5 +172,9 @@ module.exports = {
                 title_post : title_post
             });
         });
+    },
+
+    loading : function (req, res) {
+
     }
 }

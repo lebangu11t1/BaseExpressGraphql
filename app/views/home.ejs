@@ -32,10 +32,16 @@
                         </li>
                     <% }) %>
                 </ul>
+                <% if(posts.length >= 10) { %>
+                    <div class="text-center area-load-more">
+                        <!--<a class="card-load"></a>-->
+                        <p class="card-load">もっと見る</p>
+                        <div id="wait">
+                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                        </div>
+                    </div>
+                <% } %>
 
-                <div class="text-center area-load-more">
-                    <a href="#" class="card-load">もっと見る</a>
-                </div>
             </div>
 
             <div class="clear-fix"></div>

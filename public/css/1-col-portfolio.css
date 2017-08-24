@@ -327,3 +327,13 @@ body {
 	font-weight: 100;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
+
+#wait {
+	display:block;
+	width:69px;
+	height:89px;
+	/*position:absolute;*/
+	/*top: 96%;*/
+	/*left: 44%;*/
+	padding:2px;
+}
