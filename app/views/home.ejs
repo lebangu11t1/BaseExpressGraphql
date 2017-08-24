@@ -9,7 +9,7 @@
                     <p class="card-text">おすすめサークル</p>
                 </div>
 
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="circle-top">
                     <% posts.forEach(function (post) { %>
                         <li class="list-group-item">
                             <div class="row">
@@ -38,10 +38,9 @@
                     <% }) %>
                 </ul>
                 <% if(posts.length >= 10) { %>
-                    <div class="text-center area-load-more">
-                        <!--<a class="card-load"></a>-->
-                        <p class="card-load">もっと見る</p>
-                        <div id="wait">
+                    <div class="text-center area-load-more" id="area-load-a">
+                        <a style="cursor:pointer"><p class="card-load card-load-a">もっと見る</p></a>
+                        <div id="wait-a" style="display:none;">
                             <img src='/assets/image/iconLoading.gif' width="64" height="64" />
                         </div>
                     </div>
@@ -55,7 +54,7 @@
                 <div class="card-body">
                     <p class="card-text">人気のサークル</p>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="circle-middle-a">
                     <% posts.forEach(function (post) { %>
                     <li class="list-group-item">
                         <div class="row">
@@ -82,9 +81,14 @@
                     </li>
                     <% }) %>
                 </ul>
-                <div class="text-center area-load-more ">
-                    <a href="# " class="card-load ">もっと見る</a>
-                </div>
+                <% if(posts.length >= 10) { %>
+                    <div class="text-center area-load-more" id="area-load-b">
+                        <a style="cursor:pointer"><p class="card-load card-load-b">もっと見る</p></a>
+                        <div id="wait-b" style="display:none;">
+                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                        </div>
+                    </div>
+                <% } %>
             </div>
 
             <div class="clear-fix "></div>
@@ -93,7 +97,7 @@
                 <div class="card-body ">
                     <p class="card-text ">殿堂入り</p>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="circle-middle-b">
                     <% posts.forEach(function (post) { %>
                     <li class="list-group-item">
                         <div class="row">
@@ -120,9 +124,14 @@
                     </li>
                     <% }) %>
                 </ul>
-                <div class="text-center area-load-more">
-                    <a href="#" class="card-load">もっと見る</a>
-                </div>
+                <% if(posts.length >= 10) { %>
+                    <div class="text-center area-load-more" id="area-load-c">
+                        <a style="cursor:pointer"><p class="card-load card-load-c">もっと見る</p></a>
+                        <div id="wait-c" style="display:none;">
+                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                        </div>
+                    </div>
+                <% } %>
             </div>
 
             <div class="clear-fix"></div>
@@ -131,7 +140,7 @@
                 <div class="card-body">
                     <p class="card-text">すべての新着サークル</p>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="circle-bottom">
                     <% posts.forEach(function (post) { %>
                     <li class="list-group-item">
                         <div class="row">
@@ -158,9 +167,14 @@
                     </li>
                     <% }) %>
                 </ul>
-            <div class="text-center area-load-more ">
-                <a href="# " class="card-load ">もっと見る</a>
-            </div>
+                <% if(posts.length >= 10) { %>
+                    <div class="text-center area-load-more" id="area-load-d">
+                        <a style="cursor:pointer"><p class="card-load card-load-d">もっと見る</p></a>
+                        <div id="wait-d" style="display:none;">
+                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                        </div>
+                    </div>
+                <% } %>
             </div>
 
             <div class="clear-fix "></div>

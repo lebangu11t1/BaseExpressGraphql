@@ -195,8 +195,17 @@ module.exports = {
         });
     },
 
-    loading : function (req, res) {
+    loading_club: function (req, res) {
+        var offset = req.param('offset');
+        var sql = `SELECT COUNT(id) AS total_records FROM circle_posts; SELECT circle_posts.*, circle_types.id as id_type ,circle_types.name, users.avatar, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id  LIMIT ${paginate.limit} OFFSET ${offset}`;
+        con.query(sql, function (error, results, fields) {
+            if (error) throw error;
 
+            results[1].forEach(function (post) {
+                post.created_at = moment(post.created_at).fromNow();
+            });
+            res.send(results);
+        });
     },
 
     private : function (req, res) {
