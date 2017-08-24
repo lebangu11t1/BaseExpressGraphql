@@ -14,14 +14,13 @@ module.exports = function (app) {
 
     app.route('/club/:id').get(groupsController.list_a_club);
 
+    //show reply
+    app.route('/club/conversation/:comment').get(groupsController.show_reply);
+
     //group: groups router
     app.use('/groups', groups);
 
     app.use('/users', users);
-
-    app.route('/reply').get(function(req, res, next){
-        res.render('groups/show', {title: 'show group'});
-    });
 
     /**
      * [Error Routes]

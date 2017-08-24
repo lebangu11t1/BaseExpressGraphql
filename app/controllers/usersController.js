@@ -1,7 +1,28 @@
 "use strict";
 
+var moment = require('moment');
+    moment().format();
+
+    moment.updateLocale('en', {
+        relativeTime : {
+            future: "in %s",
+            past:   "%s ago",
+            s  : 'a few seconds',
+            ss : '%d seconds',
+            m:  "a minute",
+            mm: "%d minutes",
+            h:  "an hour",
+            hh: "%d hours",
+            d:  "a day",
+            dd: "%d days",
+            M:  "a month",
+            MM: "%d months",
+            y:  "a year",
+            yy: "%d years"
+        }
+    });
 var con = require('../models/connection');
-var datetime = require('node-datetime');
+var paginate = require('../config/paginate');
 
 /**
  * [RESTful API]
@@ -27,9 +48,14 @@ module.exports = {
     show: function(req, res) {
         var id = req.param('user');
         var query = `SELECT * FROM users WHERE id=${id};`+
-        `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id} LIMIT 10 OFFSET 0`;
+        `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id} LIMIT ${paginate.limit} OFFSET 0`;
         con.query(query, function (error, results, fields) {
             if (error) throw error;
+
+            results[1].forEach(function (comment) {
+                comment.created_at = moment(comment.created_at).fromNow();
+            });
+
             res.render('users/profile', { 
                 title:'show profile',
                 user: results[0][0],

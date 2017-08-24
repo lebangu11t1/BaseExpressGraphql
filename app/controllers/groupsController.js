@@ -124,7 +124,26 @@ module.exports = {
      * @param {any} res 
      */
     show_reply: function(req, res) {
-        res.render('groups/reply', {title:'reply'});
+        var circle_post_comment_id = req.param('comment');
+
+        var sql = `SELECT * FROM circle_types;` + `SELECT circle_post_comments.*,users.username,users.avatar FROM circle_post_comments INNER JOIN users ON circle_post_comments.user_id = users.id WHERE circle_post_comments.id=${circle_post_comment_id};`+
+        `SELECT circle_post_comments.*,users.username,users.avatar FROM circle_post_comments INNER JOIN users ON circle_post_comments.user_id = users.id WHERE circle_post_comments.parent_id=${circle_post_comment_id} LIMIT ${paginate.limit} OFFSET 0`;
+        con.query(sql, function (error, results, fields) {
+            if (error) throw error;
+
+            results[1][0].created_at = moment(results[1][0].created_at).fromNow();
+
+            results[2].forEach(function (comment) {
+                comment.created_at = moment(comment.created_at).fromNow();
+            });
+
+            res.render('groups/reply', { 
+                title:'show conversation',
+                groups: results[0],
+                parent: results[1][0],
+                replies: results[2]
+            });
+        });
     },
     
     /** 
