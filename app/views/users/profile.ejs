@@ -34,7 +34,7 @@
                                     <a>
                                         <h6><%- comment.username %></h6>
                                         <div class="user-address">高校2年生</div>
-                                        <time class="status-time-infor">2 か月前</time>
+                                        <time class="status-time-infor"><%- comment.created_at %></time>
                                         <p><%- comment.body %></p>
                                     </a>
                                 </div>
@@ -42,13 +42,13 @@
                         </li>
                         <%} else { %>
                         <li class="list-group-item ">
-                            <a href="reply.html">
+                            <a href="/club/conversation/<%= comment.parent_id %>">
                                 <div class="row">
                                     <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
                                     <img src="<%- (comment.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(comment.avatar).thumb %>" alt="... " class="rounded-circle " width="50px " height="50px ">
                                 </div>
                                 <div class="col-10 " style="padding: 0px; ">
-                                    <h6><%- comment.username %> <%- comment.parent_id %></h6>
+                                    <h6><%- comment.username %></h6>
                                     <div class="user-address ">高校2年生</div>
                                     <span class="talk-to " title=" ">to: <%= show_parent(comment.parent_id) %></span>
                                     <span class="sr-only tooltip-content ">
@@ -60,7 +60,7 @@
                                         <time class='tooltip-status-time-infor'>2 か月前</time>
                                         <p class='tooltip-comment'>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
                                     </span>
-                                    <time class="status-time-infor ">2 か月前</time>
+                                    <time class="status-time-infor "><%- comment.created_at %></time>
                                     <p><%- comment.body %></p>
                                     <div class="status-talk ">会話を見る</div>
                                 </div>

@@ -9,54 +9,46 @@
                 <p class="card-text">関連投稿</p>
             </div>
             <ul class="list-group list-group-flush">
+
                 <li class="list-group-item">
                     <div class="row">
-                    <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
-                        <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                        </div>
-                    <div class="col-10" style="padding: 0px;">
-                        <h6>りおる</h6>
-                        <div class="user-address">高校2年生</div>
-                        <span class="talk-to" title="">to: なぁ❄</span>
-                        <span class="sr-only tooltip-content">
-                            <img src='/assets/image/default-user.jpg' alt='...'' class='rounded-circle tooltip-img'>
-                            <div class='tooltip-user-infor'>
-                            <h6>なぁ❄</h6>
-                            <div class='tooltip-user-address'>高校2年生</div>
+                        <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
+                            <a href="/users/<%= parent.user_id %>"><img src="<%= parent.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(parent.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
-                            <time class='tooltip-status-time-infor'>2 か月前</time>
-                            <p class='tooltip-comment'>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
-                        </span>
-                        <time class="status-time-infor">2 か月前</time>
-                        <p>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
-                        <div class="status-talk">会話を見る</div>
-                    </div>
+                        <div class="col-10" style="padding: 0px;">
+                            <h6><%- parent.username %></h6>
+                            <div class="user-address">高校2年生</div>
+                            <time class="status-time-infor"><%- parent.created_at %></time>
+                            <p><%- parent.body %></p>
+                        </div>
                     </div>
                 </li>
-                <li class="list-group-item">
-                    <div class="row">
-                    <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
-                        <a href="profile.html"><img src="/assets/image/default-user.jpg" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                        </div>
-                    <div class="col-10" style="padding: 0px;">
-                        <h6>りおる</h6>
-                        <div class="user-address">高校2年生</div>
-                        <span class="talk-to" title="">to: なぁ❄</span>
-                        <span class="sr-only tooltip-content text-left">
-                            <img src='/assets/image/default-user.jpg' alt='...'' class='rounded-circle tooltip-img'>
-                            <div class='tooltip-user-infor'>
-                            <h6>なぁ❄</h6>
-                            <div class='tooltip-user-address'>高校3年生</div>
+                <% replies.forEach(function (reply) { %>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-1"" style="margin-right: 20px;padding-left: 5px;">
+                                <a href="/users/<%= reply.user_id %>"><img src="<%= reply.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(reply.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                </div>
+                            <div class="col-10" style="padding: 0px;">
+                                <h6><%- reply.username %></h6>
+                                <div class="user-address">高校2年生</div>
+                                <span class="talk-to" title="">to: なぁ❄</span>
+                                <span class="sr-only tooltip-content">
+                                    <img src='/assets/image/default-user.jpg' alt='...'' class='rounded-circle tooltip-img'>
+                                    <div class='tooltip-user-infor'>
+                                    <h6>なぁ❄</h6>
+                                    <div class='tooltip-user-address'>高校2年生</div>
+                                    </div>
+                                    <time class='tooltip-status-time-infor'>2 か月前</time>
+                                    <p class='tooltip-comment'>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
+                                </span>
+                                <time class="status-time-infor"><%- reply.created_at %></time>
+                                <p><%- reply.body %></p>
+                                <div class="status-talk">会話を見る</div>
                             </div>
-                            <time class='tooltip-status-time-infor'>3 か月前</time>
-                            <p class='tooltip-comment'>ひま部に入部しました。</p>
-                        </span>
-                        <time class="status-time-infor">2 か月前</time>
-                        <p>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
-                        <div class="status-talk">会話を見る</div>
-                    </div>
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                <% }) %>
             </ul>
             <div class="text-center area-load-more">
                 <a href="#" class="card-load">もっと見る</a>
@@ -73,13 +65,9 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>アニメ</span></a>
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>ゲーム</span></a>
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>とにかくひますぎる</span></a>
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>スポーツ</span></a>
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>ファッション・美容</span></a>
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>アイドル</span></a>
-                <a href="group.html" class="list-group-chat-item"><span class="item-dot"></span><span>その他</span></a>
+                    <% groups.forEach(function(group){ %>
+                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span class="item-dot "></span><span><%= group.name %></span></a>
+                    <% }); %>
                 </li>
             </ul>
             </div>
