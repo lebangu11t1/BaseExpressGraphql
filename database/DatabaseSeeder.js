@@ -17,8 +17,9 @@ for(let i=0;i<10;i++) {
         console.log(results);
     });
 }
+console.log('circle_types seed completed!');
 
-//Seeder circle_posts table
+//Seeder circle_post_comments table
 for(let i=0;i<200;i++) {
     let user_id = faker.random.number({min:1,max:60});
     let circle_type_id = faker.random.number({min:1,max:10});
@@ -41,6 +42,7 @@ for(let i=0;i<200;i++) {
         console.log(results);
     });
 }
+console.log('circle_posts seed completed!');
 
 //Seeder circle_posts table
 for(let i=0;i<200;i++) {
@@ -63,5 +65,4 @@ for(let i=0;i<200;i++) {
         console.log(results);
     });
 }
-
-
+console.log('circle_post_comments seed completed!');
