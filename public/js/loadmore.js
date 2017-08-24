@@ -9,7 +9,8 @@ $(document).ready(function () {
             url: '/loadmore',
 
             beforeSend: function() {
-                $('#wait').css("display", "block");
+                $('#wait').css("display", "initial");
+                $('.card-load').css("display", "none");
             },
             complete: function(data) {
                 $('#wait').css("display", "none");

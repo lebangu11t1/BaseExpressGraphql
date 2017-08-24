@@ -17,7 +17,12 @@
                                     <a href="/users/<%= post.id_user %>"><img src= "<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>"  alt="..." class="rounded-circle" width="50px" height="50px"></a>
                                 </div>
                                 <div class="col-10" style="padding: 0px;">
-                                    <a href="/club/<%= post.id %>">
+                                    <% if (post.required_approve == 1) { %>
+                                        <a href="/club/<%= post.id %>">
+                                    <% } else {%>
+                                            <a href="/private">
+                                            <% } %>
+
                                         <h6><%= post.title %></h6>
                                         <time class="status-time-infor"><%= post.created_at %></time>
                                         <p class="par"><%= post.body %></p>
@@ -58,7 +63,11 @@
                                 <a href="/users/<%= post.id_user %>"><img src="<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
+                                <% if (post.required_approve == 1) { %>
                                 <a href="/club/<%= post.id %>">
+                                    <% } else {%>
+                                    <a href="/private">
+                                        <% } %>
                                     <h6><%= post.title %></h6>
                                     <time class="status-time-infor"><%= post.created_at %></time>
                                     <p class="par"><%= post.body %></p>
@@ -92,7 +101,11 @@
                                 <a href="/users/<%= post.id_user %>"><img src="<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
-                                <a href="/club/<%= post.id %>">
+                                <% if (post.required_approve == 1) { %>
+                                        <a href="/club/<%= post.id %>">
+                                    <% } else {%>
+                                        <a href="/private">
+                                            <% } %>
                                     <h6><%= post.title %></h6>
                                     <time class="status-time-infor"><%= post.created_at %></time>
                                     <p class="par"><%= post.body %></p>
@@ -126,7 +139,11 @@
                                 <a href="/users/<%= post.id_user %>"><img src="<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
+                                <% if (post.required_approve == 1) { %>
                                 <a href="/club/<%= post.id %>">
+                                    <% } else {%>
+                                    <a href="/private">
+                                        <% } %>
                                     <h6><%= post.title %></h6>
                                     <time class="status-time-infor"><%= post.created_at %></time>
                                     <p class="par"><%= post.body %></p>

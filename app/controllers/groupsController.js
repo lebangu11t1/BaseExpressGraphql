@@ -69,9 +69,9 @@ module.exports = {
 
     /**
      * [Create function]
-     * 
-     * @param {any} req 
-     * @param {any} res 
+     *
+     * @param {any} req
+     * @param {any} res
      */
     create: function(req, res) {
         //To do something
@@ -79,9 +79,9 @@ module.exports = {
 
     /**
      * [Store function]
-     * 
-     * @param {any} req 
-     * @param {any} res 
+     *
+     * @param {any} req
+     * @param {any} res
      */
     store: function(req, res) {
         //To do something
@@ -89,9 +89,9 @@ module.exports = {
 
     /**
      * [Edit function]
-     * 
-     * @param {any} req 
-     * @param {any} res 
+     *
+     * @param {any} req
+     * @param {any} res
      */
     edit: function(req, res) {
         //To do something
@@ -99,9 +99,9 @@ module.exports = {
 
     /**
      * [Update function]
-     * 
-     * @param {any} req 
-     * @param {any} res 
+     *
+     * @param {any} req
+     * @param {any} res
      */
     update: function(req,res) {
         //To do something
@@ -109,9 +109,9 @@ module.exports = {
 
     /**
      * [Destroy function]
-     * 
-     * @param {any} req 
-     * @param {any} res 
+     *
+     * @param {any} req
+     * @param {any} res
      */
     destroy: function(req, res) {
         //To do something
@@ -195,5 +195,11 @@ module.exports = {
 
     loading : function (req, res) {
 
+    },
+
+    private : function (req, res) {
+        res.render('errors/503', {
+            title : 'private page'
+        });
     }
 }

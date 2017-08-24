@@ -329,7 +329,7 @@ body {
 }
 
 #wait {
-	display:block;
+	display:initial;
 	width:69px;
 	height:89px;
 	/*position:absolute;*/

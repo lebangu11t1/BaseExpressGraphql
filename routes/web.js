@@ -16,6 +16,8 @@ module.exports = function (app) {
 
     app.route('/club/:id').get(groupsController.list_a_club);
 
+    app.route('/private').get(groupsController.private);
+
     //show reply
     app.route('/club/conversation/:comment').get(groupsController.show_reply);
 
