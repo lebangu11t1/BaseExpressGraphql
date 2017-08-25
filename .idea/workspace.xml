@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7cbdc1a2-ef77-4e8a-9d2f-8cf3f236e804" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/loadmore-comment-scroll.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/loadmore-group-scroll.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/loadmore-profile-comment-scroll.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/loadmore-talk-scroll.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/groupsController.js" afterPath="$PROJECT_DIR$/app/controllers/groupsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/usersController.js" afterPath="$PROJECT_DIR$/app/controllers/usersController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/groups/index.ejs" afterPath="$PROJECT_DIR$/app/views/groups/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/groups/reply.ejs" afterPath="$PROJECT_DIR$/app/views/groups/reply.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/groups/show.ejs" afterPath="$PROJECT_DIR$/app/views/groups/show.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/master.ejs" afterPath="$PROJECT_DIR$/app/views/layouts/master.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/profile.ejs" afterPath="$PROJECT_DIR$/app/views/users/profile.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.js" afterPath="$PROJECT_DIR$/routes/web.js" />
-    </list>
+    <list default="true" id="7cbdc1a2-ef77-4e8a-9d2f-8cf3f236e804" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -66,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="439">
-              <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+              <caret line="30" column="27" lean-forward="false" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -397,12 +382,12 @@
       <workItem from="1503451065054" duration="15869000" />
       <workItem from="1503476013432" duration="6787000" />
       <workItem from="1503536477401" duration="12876000" />
-      <workItem from="1503622846370" duration="13452000" />
+      <workItem from="1503622846370" duration="13550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74306000" />
+    <option name="totallyTimeSpent" value="74404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="0" />
@@ -806,7 +791,7 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+          <caret line="30" column="27" lean-forward="false" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
           <folding />
         </state>
       </provider>
