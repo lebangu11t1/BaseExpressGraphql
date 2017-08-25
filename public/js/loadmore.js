@@ -24,7 +24,6 @@ $(document).ready(function () {
                 if (post.avatar!=null) {
                     avatar = JSON.parse(post.avatar).thumb;
                 }
-                
                 if (post.required_approve == 1) {
                     $('#circle-top').append(`
                         <li class="list-group-item">
@@ -129,7 +128,7 @@ $(document).ready(function () {
                         </li>
                     `);
                 } else {
-                    $('#circle-top').append(`
+                    $('#circle-middle-a').append(`
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
@@ -210,7 +209,7 @@ $(document).ready(function () {
                         </li>
                     `);
                 } else {
-                    $('#circle-top').append(`
+                    $('#circle-middle-b').append(`
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
@@ -291,7 +290,7 @@ $(document).ready(function () {
                         </li>
                     `);
                 } else {
-                    $('#circle-top').append(`
+                    $('#circle-bottom').append(`
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
