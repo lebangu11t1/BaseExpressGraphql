@@ -143,8 +143,6 @@ module.exports = {
                 results[1].created_at = moment(results[1][0].created_at).fromNow();
             }
 
-            results[1][0].created_at = moment(results[1][0].created_at).fromNow();
-
             res.render('groups/reply', { 
                 title:'show conversation',
                 groups: results[0],
