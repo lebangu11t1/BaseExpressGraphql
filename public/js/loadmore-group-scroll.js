@@ -1,9 +1,12 @@
 $(document).ready(function(){
 
     var offset = 0;
+    var end_record = false;
     $(window).scroll(function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            appendData();
+            if(end_record==false) {
+                appendData();
+            }
         }
     });
 
@@ -18,6 +21,10 @@ $(document).ready(function(){
         .done(function(data) {
             $('#area-load-group').css("display", "none");
             var avatar = '/assets/image/default-user.jpg';
+            if(data.length == 0){ //no more records
+                end_record = true; //set end record flag on
+                return; //exit
+            }
             data.forEach(function(post) {
                 if (post.avatar!=null) {
                     avatar = JSON.parse(post.avatar).thumb;
