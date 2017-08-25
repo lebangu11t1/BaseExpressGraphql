@@ -66,7 +66,8 @@ module.exports = {
                 title:'group detail',
                 clubs : results[1],
                 groups : results[0],
-                nameGroup : results[1][0].name
+                nameGroup : results[1][0].name,
+                group_id: id
             });
         })
     },
@@ -139,8 +140,8 @@ module.exports = {
                 comment.created_at = moment(comment.created_at).fromNow();
             });
 
-            if(results[1]==null) {
-                results[1].created_at = moment(results[1][0].created_at).fromNow();
+            if(results[1][0]!=null) {
+                results[1][0].created_at = moment(results[1][0].created_at).fromNow();
             }
 
             res.render('groups/reply', { 
@@ -200,13 +201,42 @@ module.exports = {
     },
 
     loading_club: function (req, res) {
-        var offset = req.param('offset');
-        var sql = `SELECT COUNT(id) AS total_records FROM circle_posts; SELECT circle_posts.*, circle_types.id as id_type ,circle_types.name, users.avatar, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id  LIMIT ${paginate.limit} OFFSET ${offset}`;
+        let offset = req.param('offset');
+        let sql = `SELECT COUNT(id) AS total_records FROM circle_posts; SELECT circle_posts.*, circle_types.id as id_type ,circle_types.name, users.avatar, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id  LIMIT ${paginate.limit} OFFSET ${offset}`;
         con.query(sql, function (error, results, fields) {
             if (error) throw error;
 
             results[1].forEach(function (post) {
                 post.created_at = moment(post.created_at).fromNow();
+            });
+            res.send(results);
+        });
+    },
+
+    loading_group: function(req, res) {
+        let group_id = req.param('group');
+        let offset = req.param('offset');
+        let sql = `SELECT circle_posts.*, circle_types.id as id_type,circle_types.name, users.avatar, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id WHERE circle_posts.circle_type_id = ${group_id} LIMIT ${paginate.limit} OFFSET ${offset}`;
+        con.query(sql, function (err, results, fields) {
+            if (err) throw err;
+
+            results.forEach(function (group) {
+                group.created_at = moment(group.created_at).fromNow();
+            });
+
+            res.send(results);
+        })
+    },
+
+    loading_talk: function(req, res) {
+        let circle_post_comment_id = req.param('comment');
+
+        var sql = `SELECT circle_post_comments.*,users.username,users.avatar FROM circle_post_comments INNER JOIN users ON circle_post_comments.user_id = users.id WHERE circle_post_comments.parent_id=${circle_post_comment_id} LIMIT ${paginate.limit} OFFSET 0`;
+        con.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            
+            results.forEach(function (comment) {
+                comment.created_at = moment(comment.created_at).fromNow();
             });
             res.send(results);
         });

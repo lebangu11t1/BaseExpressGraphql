@@ -3,6 +3,7 @@
 var groups = require('./groups');
 var users = require('./users');
 var groupsController = require('../app/controllers/groupsController');
+var usersController = require('../app/controllers/usersController');
 
 module.exports = function (app) {
     /**
@@ -13,6 +14,12 @@ module.exports = function (app) {
     app.route('/').get(groupsController.home);
 
     app.route('/loadmore/club/:offset').get(groupsController.loading_club)
+
+    app.route('/loadmore/:group/:offset').get(groupsController.loading_group);
+
+    app.route('/loadmore/profile/:user_id/:offset').get(usersController.loading_comment);
+
+    app.route('/loadmore/talk/:comment_id/:offset').get(groupsController.loading_talk);
 
     app.route('/club/:id').get(groupsController.list_a_club);
 

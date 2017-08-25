@@ -8,7 +8,7 @@
             <div class="card-body">
                 <p class="card-text">関連投稿</p>
             </div>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" id="load-talk">
                 <% if(parent!=undefined) { %>
                 <li class="list-group-item">
                     <div class="row">
@@ -51,9 +51,13 @@
                     </li>
                 <% }) %>
             </ul>
-            <div class="text-center area-load-more">
-                <a href="#" class="card-load">もっと見る</a>
-            </div>
+            <% if(replies.length >= 10) { %>
+                <div class="text-center area-load-more" id="area-load-talk" style="display:none;">
+                    <div id="wait-talk">
+                        <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                    </div>
+                </div>
+            <% } %>
             </div>
 
             <div class="clear-fix"></div>
@@ -77,3 +81,5 @@
         </div>
     </div>
 </div>
+
+<% block('scripts', '<script src="/assets/js/loadmore-talk-scroll.js"></script>') -%>

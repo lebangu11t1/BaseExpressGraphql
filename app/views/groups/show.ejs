@@ -12,12 +12,12 @@
                 <% comments.forEach(function (comment) { %>
                 <% if (comment.parent_id != null) { %>
                     <li class="list-group-item">
-                        <a href="/users/<%= comment.id_user %>">
-                            <div class="row">
-                                <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                    <img src="<%= comment.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(comment.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px">
-                                </div>
-                                <div class="col-10" style="padding: 0px;">
+                        <div class="row">
+                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
+                                <a href="/users/<%= comment.id_user %>"><img src="<%= comment.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(comment.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                            </div>
+                            <div class="col-10" style="padding: 0px;">
+                                <a href="/club/conversation/<%= comment.parent_id %>">
                                     <h6><%= comment.username %></h6>
                                     <div class="user-address">高校2年生</div>
                                     <span data-parent_id = "<%= comment.parent_id %>" class="talk-to" title="">to: なぁ❄</span>
@@ -33,9 +33,9 @@
                                     <time class="status-time-infor"><%= comment.created_at %></time>
                                     <p class="par"><%= comment.body %></p>
                                     <div class="status-talk">会話を見る</div>
-                                </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>  
                     </li>
                 <% } else { %>
                     <li class="list-group-item">
