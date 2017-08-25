@@ -12,7 +12,7 @@ module.exports = function (app) {
 
     app.route('/').get(groupsController.home);
 
-    app.route('/loadmore').get(groupsController.loading)
+    app.route('/loadmore/club/:offset').get(groupsController.loading_club)
 
     app.route('/club/:id').get(groupsController.list_a_club);
 
