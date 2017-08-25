@@ -1,28 +1,9 @@
 "use strict";
 
-var moment = require('moment');
-    moment().format();
-
-    moment.updateLocale('en', {
-        relativeTime : {
-            future: "in %s",
-            past:   "%s ago",
-            s  : 'a few seconds',
-            ss : '%d seconds',
-            m:  "a minute",
-            mm: "%d minutes",
-            h:  "an hour",
-            hh: "%d hours",
-            d:  "a day",
-            dd: "%d days",
-            M:  "a month",
-            MM: "%d months",
-            y:  "a year",
-            yy: "%d years"
-        }
-    });
 var con = require('../models/connection');
 var paginate = require('../config/paginate');
+var moment = require('moment');
+moment.locale('ja');
 
 /**
  * [RESTful API]
@@ -50,7 +31,7 @@ module.exports = {
         var query = `SELECT * FROM users WHERE id=${id};`+
         `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id} LIMIT ${paginate.limit} OFFSET 0`;
         con.query(query, function (error, results, fields) {
-            if (error) throw error;
+            if (error) return res.status(404).render('errors/404', {title: 'errors'});
 
             results[1].forEach(function (comment) {
                 comment.created_at = moment(comment.created_at).fromNow();

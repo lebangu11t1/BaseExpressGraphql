@@ -217,7 +217,7 @@ body {
 	height: 8px; 
 	margin-top: -5px; 
 	border-radius: 4px; 
-	background-color: #111;
+	/*background-color: #111;*/
 }
 .nav-back {
 	display: block; 

@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="col-10" style="padding: 0px;">
                                     <% if (post.required_approve == 1) { %>
-                                        <a href="/club/<%= post.id %>">
+                                        <a href="/club/<%= post.id %>?title=<%= post.title %>">
                                     <% } else {%>
                                             <a href="/private">
                                             <% } %>
@@ -45,139 +45,8 @@
                         </div>
                     </div>
                 <% } %>
-
             </div>
-
             <div class="clear-fix"></div>
-            <!--人気のサークル-->
-            <div class="card" style="width: 100%;">
-                <div class="card-body">
-                    <p class="card-text">人気のサークル</p>
-                </div>
-                <ul class="list-group list-group-flush" id="circle-middle-a">
-                    <% posts.forEach(function (post) { %>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="/users/<%= post.id_user %>"><img src="<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                            </div>
-                            <div class="col-10" style="padding: 0px;">
-                                <% if (post.required_approve == 1) { %>
-                                <a href="/club/<%= post.id %>">
-                                    <% } else {%>
-                                    <a href="/private">
-                                        <% } %>
-                                    <h6><%= post.title %></h6>
-                                    <time class="status-time-infor"><%= post.created_at %></time>
-                                    <p class="par"><%= post.body %></p>
-                                    <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% if(posts.length >= 10) { %>
-                    <div class="text-center area-load-more" id="area-load-b">
-                        <a style="cursor:pointer"><p class="card-load card-load-b">もっと見る</p></a>
-                        <div id="wait-b" style="display:none;">
-                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
-                        </div>
-                    </div>
-                <% } %>
-            </div>
-
-            <div class="clear-fix "></div>
-            <!--殿堂入り-->
-            <div class="card " style="width: 100%; ">
-                <div class="card-body ">
-                    <p class="card-text ">殿堂入り</p>
-                </div>
-                <ul class="list-group list-group-flush" id="circle-middle-b">
-                    <% posts.forEach(function (post) { %>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="/users/<%= post.id_user %>"><img src="<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                            </div>
-                            <div class="col-10" style="padding: 0px;">
-                                <% if (post.required_approve == 1) { %>
-                                        <a href="/club/<%= post.id %>">
-                                    <% } else {%>
-                                        <a href="/private">
-                                            <% } %>
-                                    <h6><%= post.title %></h6>
-                                    <time class="status-time-infor"><%= post.created_at %></time>
-                                    <p class="par"><%= post.body %></p>
-                                    <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% if(posts.length >= 10) { %>
-                    <div class="text-center area-load-more" id="area-load-c">
-                        <a style="cursor:pointer"><p class="card-load card-load-c">もっと見る</p></a>
-                        <div id="wait-c" style="display:none;">
-                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
-                        </div>
-                    </div>
-                <% } %>
-            </div>
-
-            <div class="clear-fix"></div>
-            <!--すべての新着サークル-->
-            <div class="card" style="width: 100%;">
-                <div class="card-body">
-                    <p class="card-text">すべての新着サークル</p>
-                </div>
-                <ul class="list-group list-group-flush" id="circle-bottom">
-                    <% posts.forEach(function (post) { %>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="/users/<%= post.id_user %>"><img src="<%= post.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(post.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                            </div>
-                            <div class="col-10" style="padding: 0px;">
-                                <% if (post.required_approve == 1) { %>
-                                <a href="/club/<%= post.id %>">
-                                    <% } else {%>
-                                    <a href="/private">
-                                        <% } %>
-                                    <h6><%= post.title %></h6>
-                                    <time class="status-time-infor"><%= post.created_at %></time>
-                                    <p class="par"><%= post.body %></p>
-                                    <p>
-                                        <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
-                                        <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
-                                        <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% if(posts.length >= 10) { %>
-                    <div class="text-center area-load-more" id="area-load-d">
-                        <a style="cursor:pointer"><p class="card-load card-load-d">もっと見る</p></a>
-                        <div id="wait-d" style="display:none;">
-                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
-                        </div>
-                    </div>
-                <% } %>
-            </div>
-
-            <div class="clear-fix "></div>
         </div>
 
         <!-- right -->
@@ -189,7 +58,7 @@
             <ul class="list-group list-group-flush ">
                 <li class="list-group-item ">
                     <% groups.forEach(function(group){ %>
-                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span class="item-dot "></span><span><%= group.name %></span></a>
+                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span style="background-color: <%= group.color %>" class="item-dot "></span><span><%= group.name %></span></a>
                     <% }); %>
                 </li>
             </ul>

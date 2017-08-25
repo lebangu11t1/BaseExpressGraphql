@@ -9,7 +9,6 @@ module.exports = function (app) {
      * [List Routes]
      * 
      */
-
     app.route('/').get(groupsController.home);
 
     app.route('/loadmore/club/:offset').get(groupsController.loading_club)

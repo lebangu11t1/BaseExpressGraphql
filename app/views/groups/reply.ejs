@@ -67,7 +67,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <% groups.forEach(function(group){ %>
-                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span class="item-dot "></span><span><%= group.name %></span></a>
+                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span style="background-color: <%= group.color %>" class="item-dot "></span><span><%= group.name %></span></a>
                     <% }); %>
                 </li>
             </ul>
