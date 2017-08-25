@@ -5,10 +5,11 @@
         <div class="col-md-8 col-sm-12 col-xs-12">
             <!--アニメ-->
             <div class="card" style="width: 100%;">
+                <p class="sr-only" id="group-id"><%= group_id %></p>
                 <div class="card-body">
-                    <p class="card-text"><%= nameGroup %></p>
+                    <p class="card-text"><%= nameGroup %></p> 
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="load-group">
                     <% clubs.forEach(function (club) { %>
                         <li class="list-group-item">
                             <div class="row">
@@ -35,9 +36,11 @@
                         </li>
                     <% }) %>
                 </ul>
-                <% if (clubs.length > 0) { %>
-                    <div class="text-center area-load-more">
-                        <a href="#" class="card-load">もっと見る</a>
+                <% if(clubs.length >= 10) { %>
+                    <div class="text-center area-load-more" id="area-load-group" style="display:none;">
+                        <div id="wait-group">
+                            <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                        </div>
                     </div>
                 <% } %>
             </div>
@@ -61,3 +64,5 @@
         </div>
     </div>
 </div>
+
+<% block('scripts', '<script src="/assets/js/loadmore-group-scroll.js"></script>') -%>

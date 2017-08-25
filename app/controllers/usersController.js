@@ -29,10 +29,13 @@ module.exports = {
     show: function(req, res) {
         var id = req.param('user');
         var query = `SELECT * FROM users WHERE id=${id};`+
-        `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id} LIMIT ${paginate.limit} OFFSET 0`;
+        `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id} LIMIT ${paginate.limit} OFFSET 0;`+
+        `SELECT COUNT(users.id) AS 'total' FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id}`;
         con.query(query, function (error, results, fields) {
-            if (error) return res.status(404).render('errors/404', {title: 'errors'});
-
+            if (error) {
+                return res.status(404).render('errors/404', {title: 'errors'});
+            }
+            
             results[1].forEach(function (comment) {
                 comment.created_at = moment(comment.created_at).fromNow();
             });
@@ -40,7 +43,9 @@ module.exports = {
             res.render('users/profile', { 
                 title:'show profile',
                 user: results[0][0],
-                comments: results[1]
+                comments: results[1],
+                user_id: id,
+                total_comment: results[2][0]
             });
         }); 
     },
@@ -93,5 +98,22 @@ module.exports = {
      */
     destroy: function(req, res) {
         //To do something
-    }
+    },
+
+    loading_comment: function(req, res) {
+        let user_id = req.param('user_id');
+        let offset = req.param('offset');
+        let query = `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${user_id} LIMIT ${paginate.limit} OFFSET ${offset}`;
+        con.query(query, function (error, results, fields) {
+            if (error) {
+                return res.status(404).render('errors/404', {title: 'errors'});
+            }
+
+            results.forEach(function (comment) {
+                comment.created_at = moment(comment.created_at).fromNow();
+            });
+
+            res.send(results);
+        }); 
+    },
 }
