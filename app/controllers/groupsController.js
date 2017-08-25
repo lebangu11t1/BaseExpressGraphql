@@ -1,6 +1,10 @@
 "use strict";
 
 var datetime = require('node-datetime');
+// var bodyParser = require('body-parser');
+//
+// var urlencodedParser = bodyParser.urlencoded({ extended: true });
+
 var moment = require('moment');
     moment().format();
 
@@ -138,7 +142,9 @@ module.exports = {
             if(results[1]==null) {
                 results[1].created_at = moment(results[1][0].created_at).fromNow();
             }
-            
+
+            results[1][0].created_at = moment(results[1][0].created_at).fromNow();
+
             res.render('groups/reply', { 
                 title:'show conversation',
                 groups: results[0],
@@ -202,6 +208,25 @@ module.exports = {
     private : function (req, res) {
         res.render('errors/503', {
             title : 'private page'
+        });
+    },
+
+    userInformation : function (req, res) {
+        var sql = `SELECT circle_post_comments.*, users.username, users.avatar, users.id as id_user 
+                    FROM circle_post_comments 
+                    INNER JOIN users ON circle_post_comments.user_id = users.id 
+                    WHERE circle_post_comments.id = ${req.params.parent_id}`;
+
+        con.query(sql, function (err, results) {
+            if (err) {
+                return res.status(404).render('errors/404', {title: 'errors'});
+            }
+            var data = 2; // empty
+            if (results.length > 0) {
+                data = results[0];
+                data.created_at = moment(data.created_at).fromNow();
+            }
+            res.json(data);
         });
     }
 }

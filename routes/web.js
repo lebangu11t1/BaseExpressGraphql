@@ -18,6 +18,8 @@ module.exports = function (app) {
 
     app.route('/private').get(groupsController.private);
 
+    app.route('/userInformation/:parent_id').get(groupsController.userInformation);
+
     //show reply
     app.route('/club/conversation/:comment').get(groupsController.show_reply);
 
