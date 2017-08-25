@@ -4,11 +4,12 @@
     <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
         <!--【腐向け】腐った学生集合！-->
+        <p class="sr-only" id="circle-post-id"><%- circle_post_id %></p>
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <p class="card-text"><%= title_post %></p>
             </div>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" id="load-comment">
                 <% comments.forEach(function (comment) { %>
                 <% if (comment.parent_id != null) { %>
                     <li class="list-group-item">
@@ -57,8 +58,10 @@
                 <% }) %>
             </ul>
             <% if(comments.length >= 10) { %>
-                <div class="text-center area-load-more">
-                    <a href="#" class="card-load">もっと見る</a>
+                <div class="text-center area-load-more" id="area-load-gr-comment" style="display:none;">
+                    <div id="wait-gr-comment">
+                        <img src='/assets/image/iconLoading.gif' width="64" height="64" />
+                    </div>
                 </div>
             <% } %>
         </div>
@@ -84,3 +87,5 @@
     </div>
     </div>
 </div>
+
+<% block('scripts', '<script src="/assets/js/loadmore-comment-scroll.js"></script>') -%> 

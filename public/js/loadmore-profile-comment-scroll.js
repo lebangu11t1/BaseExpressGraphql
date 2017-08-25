@@ -43,7 +43,7 @@ $(document).ready(function(){
                 } else {
                     $('#profile-load-comment').append(`
                         <li class="list-group-item ">
-                            <a href="/club/conversation/<%= comment.parent_id %>">
+                            <a href="/club/conversation/${comment.parent_id}">
                                 <div class="row">
                                     <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
                                     <img src="${avatar}" alt="... " class="rounded-circle " width="50px " height="50px ">

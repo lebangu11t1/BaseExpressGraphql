@@ -51,7 +51,9 @@ module.exports = {
         `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id} LIMIT ${paginate.limit} OFFSET 0;`+
         `SELECT COUNT(users.id) AS 'total' FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${id}`;
         con.query(query, function (error, results, fields) {
-            if (error) throw error;
+            if (error) {
+                return res.status(404).render('errors/404', {title: 'errors'});
+            }
             
             results[1].forEach(function (comment) {
                 comment.created_at = moment(comment.created_at).fromNow();
@@ -122,7 +124,9 @@ module.exports = {
         let offset = req.param('offset');
         let query = `SELECT users.*, circle_post_comments.* FROM users INNER JOIN circle_post_comments ON users.id = circle_post_comments.user_id WHERE users.id=${user_id} LIMIT ${paginate.limit} OFFSET ${offset}`;
         con.query(query, function (error, results, fields) {
-            if (error) throw error;
+            if (error) {
+                return res.status(404).render('errors/404', {title: 'errors'});
+            }
 
             results.forEach(function (comment) {
                 comment.created_at = moment(comment.created_at).fromNow();

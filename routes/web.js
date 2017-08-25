@@ -21,6 +21,8 @@ module.exports = function (app) {
 
     app.route('/loadmore/talk/:comment_id/:offset').get(groupsController.loading_talk);
 
+    app.route('/loadmore/comment/:circle_post_id/:offset').get(groupsController.loading_comment);
+
     app.route('/club/:id').get(groupsController.list_a_club);
 
     app.route('/private').get(groupsController.private);
