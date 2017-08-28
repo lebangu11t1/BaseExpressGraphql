@@ -29,7 +29,7 @@ module.exports = {
      */
     show: function(req, res) {
         var id = req.params.group;
-        var sql = "SELECT * FROM circle_types ; SELECT circle_posts.*, circle_types.id as id_type,circle_types.name, users.avatar, users.username, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id WHERE circle_posts.circle_type_id = "+ id +" LIMIT "+ paginate.limit +" OFFSET 0; " +
+        var sql = "SELECT * FROM circle_types ; SELECT circle_posts.*, circle_types.color, circle_types.id as id_type,circle_types.name, users.avatar, users.username, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id WHERE circle_posts.circle_type_id = "+ id +" LIMIT "+ paginate.limit +" OFFSET 0; " +
             " SELECT * FROM circle_types WHERE id = "+ id +" ";
         con.query(sql, function (err, results, fields) {
             if (err) return res.status(404).render('errors/404', {title: 'errors'});
@@ -44,13 +44,14 @@ module.exports = {
             } else {
                 name = results[2][0].name;
             }
-
+            
             res.render('groups/index', {
                 title:'group detail',
                 clubs : results[1],
                 groups : results[0],
                 nameGroup : name,
-                group_id: id
+                group_id: id,
+                group_color: results[1][0].color
             });
         })
     },
@@ -141,7 +142,7 @@ module.exports = {
      * [home description] 
      */
     home : function (req, res) {
-        var sql = "SELECT * FROM circle_types ; SELECT circle_posts.*, circle_types.id as id_type ,circle_types.name, users.avatar, users.username, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id  LIMIT "+ paginate.limit +" OFFSET 0";
+        var sql = "SELECT * FROM circle_types ; SELECT circle_posts.*, circle_types.color, circle_types.id as id_type ,circle_types.name, users.avatar, users.username, users.id as id_user FROM circle_posts INNER JOIN circle_types ON circle_posts.circle_type_id = circle_types.id INNER JOIN users ON circle_posts.user_id = users.id  LIMIT "+ paginate.limit +" OFFSET 0";
         con.query(sql, function (error, results, fields) {
             if (error) throw error;
 

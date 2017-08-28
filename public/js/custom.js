@@ -8,7 +8,7 @@ $(document).ready(function(){
         
 
     $(document).on('mouseenter', '.talk-to',function (event) {
-        event.preventDefault();
+        // event.preventDefault();
         var parent_id = $(this).attr("data-parent_id");
         $.ajax({
             method: "GET",

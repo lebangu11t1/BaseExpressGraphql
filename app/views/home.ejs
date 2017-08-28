@@ -28,7 +28,7 @@
                                         <time class="status-time-infor"><%= post.created_at %></time>
                                         <p class="par"><%= post.body %></p>
                                         <p>
-                                            <span class="name-group"><i class="fa fa-circle"></i><%= post.name %></span>
+                                            <span class="name-group" style="color: <%= post.color %>"><i class="fa fa-circle"></i><%= post.name %></span>
                                             <span class="status-infor"><i class="fa fa-circle"></i> <%= post.total_comments %>件</span>
                                             <span class="status-infor"><i class="fa fa-user"></i> <%= post.total_members %>人</span>
                                         </p>
@@ -69,7 +69,7 @@
                 <li class="list-group-item ">
                     <% if(groups.length > 0) { %>
                         <% groups.forEach(function(group){ %>
-                            <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span style="background-color: <%= group.color %>" class="item-dot "></span><span><%= group.name %></span></a>
+                            <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span style="background-color: <%= group.color %>" class="item-dot "></span><span style="color: <%= group.color %>"><%= group.name %></span></a>
                         <% }); %>
                     <% } else { %>
                         <div class="row">
