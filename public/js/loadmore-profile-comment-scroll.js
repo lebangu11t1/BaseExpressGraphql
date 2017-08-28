@@ -59,7 +59,7 @@ $(document).ready(function(){
                                     <h6>${comment.username}</h6>
                                     <div class="user-address ">高校2年生</div>
                                     <span data-parent_id = "${comment.parent_id}" class="talk-to" title=" ">to: </span>
-                                    <span class="sr-only tooltip-content">
+                                    <div class="tooltip-content">
                                         <img src='/assets/image/default-user.jpg' alt='...' class='rounded-circle tooltip-img avatar-${comment.parent_id}'>
                                         <div class='tooltip-user-infor'>
                                             <h6 class="username-${comment.parent_id}">❄なぁ</h6>
@@ -67,7 +67,7 @@ $(document).ready(function(){
                                         </div>
                                         <time class='tooltip-status-time-infor from-now-${comment.parent_id}'>2 か月前</time>
                                         <p class='tooltip-comment titles-${comment.parent_id}'>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
-                                    </span>
+                                    </div>
                                     <time class="status-time-infor ">${comment.created_at}</time>
                                     <p>${comment.body}</p>
                                     <div class="status-talk ">会話を見る</div>

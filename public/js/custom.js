@@ -1,13 +1,6 @@
 $(document).ready(function(){
-  	// $(".talk-to").tooltip({
-    // 	content: function(){ 
-    //     	return $(this).parent().find('.tooltip-content').html(); 
-    // 	},
-    // 	tooltipClass: "custom-tooltip-styling",
-  	// });
         
-
-    $(document).on('mouseenter', '.talk-to',function (event) {
+    $(document).on('mouseover', '.talk-to',function (event) {
         // event.preventDefault();
         var parent_id = $(this).attr("data-parent_id");
         $.ajax({
@@ -25,16 +18,11 @@ $(document).ready(function(){
                 }
             });
 
-        $(this).tooltip({
-            content: function(){ 
-                return $(this).parent().find('.tooltip-content').html(); 
-            },
-            tooltipClass: "custom-tooltip-styling",
-        });
+        $(this).parent().find('.tooltip-content').show();
     });
 
-    $('.talk-to').mouseout(function () {
-    //    do something
+    $(document).on('mouseout', '.talk-to', function () {
+        $(this).parent().find('.tooltip-content').hide();
     });
 
 });
