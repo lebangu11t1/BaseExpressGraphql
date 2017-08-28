@@ -10,11 +10,12 @@
                 <p class="card-text">関連投稿</p>
             </div>
             <ul class="list-group list-group-flush" id="load-talk">
+            <% if(replies.length > 0) { %>
                 <% if(parent!=undefined) { %>
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                            <a href="/users/<%= parent.user_id %>"><img src="<%= parent.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(parent.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                            <a href="/users/<%= parent.user_id %>"><img src="<%= parent.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(parent.avatar).thumb %>" alt="<%- parent.username %>" class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                         <div class="col-10" style="padding: 0px;">
                             <h6><%- parent.username %></h6>
@@ -29,7 +30,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="/users/<%= reply.user_id %>"><img src="<%= reply.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(reply.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                <a href="/users/<%= reply.user_id %>"><img src="<%= reply.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(reply.avatar).thumb %>" alt="<%- reply.username %>" class="rounded-circle" width="50px" height="50px"></a>
                                 </div>
                             <div class="col-10" style="padding: 0px;">
                                 <h6><%- reply.username %></h6>
@@ -51,6 +52,15 @@
                         </div>
                     </li>
                 <% }) %>
+            <% } else { %>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 text-center mes-empty">
+                            <h4>Empty Informations</h4>
+                        </div>
+                    </div>
+                </li>
+            <% } %> 
             </ul>
             <% if(replies.length >= 10) { %>
                 <div class="text-center area-load-more" id="area-load-talk" style="display:none;">
@@ -71,9 +81,17 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <% groups.forEach(function(group){ %>
-                        <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span style="background-color: <%= group.color %>" class="item-dot "></span><span><%= group.name %></span></a>
-                    <% }); %>
+                    <% if(groups.length > 0) { %>
+                        <% groups.forEach(function(group){ %>
+                            <a href="/groups/<%= group.id %>" class="list-group-chat-item "><span style="background-color: <%= group.color %>" class="item-dot "></span><span><%= group.name %></span></a>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="row">
+                            <div class="col-12 text-center mes-empty">
+                                <h4>Empty Informations</h4>
+                            </div>
+                        </div>
+                    <% } %>
                 </li>
             </ul>
             </div>

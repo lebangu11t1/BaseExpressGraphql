@@ -337,3 +337,6 @@ body {
 	/*left: 44%;*/
 	padding:2px;
 }
+.mes-empty {
+	color: rgb(182, 192, 200);
+}

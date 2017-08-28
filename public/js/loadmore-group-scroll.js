@@ -34,7 +34,7 @@ $(document).ready(function(){
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                    <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                    <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="${post.username}" class="rounded-circle" width="50px" height="50px"></a>
                                 </div>
                                 <div class="col-10" style="padding: 0px;">
                                     <a href="/club/${post.id}">
@@ -56,7 +56,7 @@ $(document).ready(function(){
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="${post.username}" class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
                                 <a href="/private">

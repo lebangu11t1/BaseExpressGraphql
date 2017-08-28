@@ -6,7 +6,7 @@
             <p class="sr-only" id="user-id"><%- user_id %></p>
             <div class="card" style="width:100%;">
                 <img class="card-img-top" src="/assets/image/default-thumbnail.jpg" alt="Card image cap" height="140px">
-                <img src="<%- (user.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(user.avatar).thumb %>" alt="..." class="rounded-circle img-profile">
+                <img src="<%- (user.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(user.avatar).thumb %>" alt="<%- user.username %>" class="rounded-circle img-profile">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center area-profile">
                         <h3><%- user.username %></h3>
@@ -24,12 +24,13 @@
                     <p class="card-text">このユーザーによる投稿 <span>(<%- total_comment.total %>)</span></p>
                 </div>
                 <ul class="list-group list-group-flush" id="profile-load-comment">
+                <% if(comments.length > 0) { %>
                     <% comments.forEach(function (comment) { %>
                         <% if(comment.parent_id==null) { %>
                         <li class="list-group-item ">
                             <div class="row ">
                                 <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                    <img src="<%- (comment.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(comment.avatar).thumb %>" alt="..." class="rounded-circle" width="50px" height="50px">
+                                    <img src="<%- (comment.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(comment.avatar).thumb %>" alt="<%- comment.username %>" class="rounded-circle" width="50px" height="50px">
                                 </div>
                                 <div class="col-10" style="padding: 0px;">
                                     <a>
@@ -46,12 +47,12 @@
                             <a href="/club/conversation/<%= comment.parent_id %>">
                                 <div class="row">
                                     <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                    <img src="<%- (comment.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(comment.avatar).thumb %>" alt="... " class="rounded-circle " width="50px " height="50px ">
+                                    <img src="<%- (comment.avatar==null) ? '/assets/image/default-user.jpg' : JSON.parse(comment.avatar).thumb %>" alt="<%- comment.username %>" class="rounded-circle " width="50px " height="50px ">
                                 </div>
                                 <div class="col-10 " style="padding: 0px; ">
                                     <h6><%= comment.username %></h6>
                                     <div class="user-address ">高校2年生</div>
-                                    <span data-parent_id = "<%= comment.parent_id %>" class="talk-to" title=" ">to: ss</span>
+                                    <span data-parent_id = "<%= comment.parent_id %>" class="talk-to" title="">to: ss</span>
                                     <span class="sr-only tooltip-content">
                                         <img src='/assets/image/default-user.jpg' alt='...' class='rounded-circle tooltip-img avatar-<%= comment.parent_id %>'>
                                         <div class='tooltip-user-infor'>
@@ -69,6 +70,15 @@
                             </a>
                         </li>
                     <% }}) %>
+                <% } else { %>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-12 text-center mes-empty">
+                                <h4>Empty Informations</h4>
+                            </div>
+                        </div>
+                    </li>
+                <% } %>
                 </ul>
                 <% if(comments.length >= 10) { %>
                     <div class="text-center area-load-more" id="area-load-comment" style="display:none;">
