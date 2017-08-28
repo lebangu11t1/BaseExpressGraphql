@@ -168,6 +168,10 @@ module.exports = {
                 return res.status(404).render('errors/404', {title: 'errors'});
             }
 
+            if(results[2][0].required_approve===0) {
+                return res.status(503).render('errors/503', {title: 'errors'});
+            }
+
             var title_post = "";
             if (typeof results[2][0] === 'undefined') {
                 return res.status(404).render('errors/404', {title: 'errors'});

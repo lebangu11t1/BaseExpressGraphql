@@ -18,11 +18,7 @@
                                         <a href="/users/<%= club.id_user %>"><img src="<%= club.avatar == null ? "/assets/image/default-user.jpg" : JSON.parse(club.avatar).thumb %>" alt="<%- club.username %>" class="rounded-circle" width="50px" height="50px"></a>
                                     </div>
                                     <div class="col-10" style="padding: 0px;">
-                                        <% if (club.required_approve == 1) { %>
-                                        <a href="/club/<%= club.id %>">
-                                            <% } else {%>
-                                            <a href="/private">
-                                                <% } %>
+                                        <a href="/club/<%= club.id %>?title=<%= club.title %>">
                                             <h6><%= club.title %></h6>
                                             <time class="status-time-infor"><%= club.created_at %></time>
                                             <p class="par"><%= club.body %></p>
