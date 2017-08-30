@@ -337,3 +337,34 @@ body {
 	/*left: 44%;*/
 	padding:2px;
 }
+.mes-empty {
+	color: rgb(182, 192, 200);
+}
+.tooltip-content {
+	display:none;
+	position: absolute;
+	width: 300px;
+	top:0px;
+	left:0px;
+	margin-left: 0rem;
+	margin-top: 5.30rem;
+	padding: 0.75rem;
+	border-radius: 3px;
+	box-shadow: rgba(0,0,0,0.5) 0px 0px 4px; 
+	background-color: rgb(101,114,124);
+	color: rgb(255,255,255); 
+	font-size: 0.813em;
+	z-index: 10;
+}
+.tooltip-content:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom:8px solid rgb(101,114,124);
+    left:10px;
+    top:-7px; 
+}

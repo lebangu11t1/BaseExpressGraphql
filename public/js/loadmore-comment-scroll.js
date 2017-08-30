@@ -34,7 +34,7 @@ $(document).ready(function(){
                         <li class="list-group-item ">
                             <div class="row ">
                                 <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                    <img src="${avatar}" alt="..." class="rounded-circle" width="50px" height="50px">
+                                    <img src="${avatar}" alt="${comment.username}" class="rounded-circle" width="50px" height="50px">
                                 </div>
                                 <div class="col-10" style="padding: 0px;">
                                     <a>
@@ -52,14 +52,14 @@ $(document).ready(function(){
                         <li class="list-group-item ">      
                             <div class="row">
                                 <div class="col-1" style="margin-right: 20px;padding-left: 5px; ">
-                                    <a href="/users/${comment.id_user}"><img src="${avatar}" alt="... " class="rounded-circle " width="50px " height="50px "></a>
+                                    <a href="/users/${comment.id_user}"><img src="${avatar}" alt="${comment.username}" class="rounded-circle " width="50px " height="50px "></a>
                                 </div>
                                 <div class="col-10 " style="padding: 0px; ">
                                     <a href="/club/conversation/${comment.parent_id}">
                                         <h6>${comment.username}</h6>
                                         <div class="user-address ">高校2年生</div>
                                         <span data-parent_id = "${comment.parent_id}" class="talk-to" title=" ">to: </span>
-                                        <span class="sr-only tooltip-content">
+                                        <div class="tooltip-content">
                                             <img src='/assets/image/default-user.jpg' alt='...' class='rounded-circle tooltip-img avatar-${comment.parent_id}'>
                                             <div class='tooltip-user-infor'>
                                                 <h6 class="username-${comment.parent_id}">❄なぁ</h6>
@@ -67,7 +67,7 @@ $(document).ready(function(){
                                             </div>
                                             <time class='tooltip-status-time-infor from-now-${comment.parent_id}'>2 か月前</time>
                                             <p class='tooltip-comment titles-${comment.parent_id}'>ひま部に入部しました。よろしくお願いします！ #初めての投稿</p>
-                                        </span>
+                                        </div>
                                         <time class="status-time-infor ">${comment.created_at}</time>
                                         <p>${comment.body}</p>
                                         <div class="status-talk ">会話を見る</div>

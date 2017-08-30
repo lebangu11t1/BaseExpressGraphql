@@ -24,37 +24,14 @@ $(document).ready(function () {
                 if (post.avatar!=null) {
                     avatar = JSON.parse(post.avatar).thumb;
                 }
-                if (post.required_approve == 1) {
-                    $('#circle-top').append(`
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                    <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="..." class="rounded-circle" width="50px" height="50px"></a>
-                                </div>
-                                <div class="col-10" style="padding: 0px;">
-                                    <a href="/club/${post.id}">
-                                        <h6>${post.title}</h6>
-                                        <time class="status-time-infor">${post.created_at}</time>
-                                        <p class="par">${post.body}</p>
-                                        <p>
-                                            <span class="name-group"><i class="fa fa-circle"></i>${post.name}</span>
-                                            <span class="status-infor"><i class="fa fa-circle"></i>${post.total_comments} 件</span>
-                                            <span class="status-infor"><i class="fa fa-user"></i>${post.total_members} 人</span>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    `);
-                } else {
-                    $('#circle-top').append(`
+                $('#circle-top').append(`
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-1" style="margin-right: 20px;padding-left: 5px;">
-                                <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="..." class="rounded-circle" width="50px" height="50px"></a>
+                                <a href="/users/${post.id_user}"><img src= "${avatar}"  alt="${post.username}" class="rounded-circle" width="50px" height="50px"></a>
                             </div>
                             <div class="col-10" style="padding: 0px;">
-                                <a href="/private">
+                                <a href="/club/${post.id}?title=${post.title}">
                                     <h6>${post.title}</h6>
                                     <time class="status-time-infor">${post.created_at}</time>
                                     <p class="par">${post.body}</p>
@@ -67,8 +44,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </li>
-                `); 
-                }
+                `);
             });
         })
         .fail(function() {
