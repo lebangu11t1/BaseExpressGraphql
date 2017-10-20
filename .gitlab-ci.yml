@@ -1,0 +1,10 @@
+cache:
+  key: "$CI_COMMIT_REF_NAME"
+  untracked: true
+build:
+  script:
+    - echo $CI_PROJECT_DIR
+  tags:
+    - STAGING
+  only:
+    - staging
