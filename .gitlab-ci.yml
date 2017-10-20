@@ -5,7 +5,7 @@ build:
   script:
     - echo $CI_PROJECT_DIR
     - npm install
-    - rsync -a /home/gitlab-runner/builds/62fd03ed/0/app-vn/sns-vn-web /srv/sns-vn-web
+    - sudo rsync -a /home/gitlab-runner/builds/62fd03ed/0/app-vn/sns-vn-web /srv/sns-vn-web
     - pm2 start /srv/sns-vn-web/app.js
   tags:
     - STAGING
