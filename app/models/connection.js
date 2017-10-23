@@ -3,7 +3,7 @@
 var mysql = require('mysql');
 var configDBMysql = require('../config/database');
 
-const db_dev = configDBMysql.mysqldev;
+const db_dev = configDBMysql.mysqlprod;
 
 var connection = mysql.createConnection({
     host     : db_dev.host,
