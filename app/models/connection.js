@@ -3,11 +3,13 @@
 var mysql = require('mysql');
 var configDBMysql = require('../config/database');
 
+const db_dev = configDBMysql.mysqldev;
+
 var connection = mysql.createConnection({
-    host     : configDBMysql.mysql.host,
-    user     : configDBMysql.mysql.user,
-    password : configDBMysql.mysql.password,
-    database : configDBMysql.mysql.database,
+    host     : db_dev.host,
+    user     : db_dev.user,
+    password : db_dev.password,
+    database : db_dev.database,
     multipleStatements: true
 });
 
